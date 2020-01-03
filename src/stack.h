@@ -3,8 +3,6 @@
 
 #include <stdexcept>
 
-using namespace std;
-
 template<class T = int>
 class Stack {
 private:
@@ -21,7 +19,7 @@ public:
         if (top == nelems - 1) {
             T* new_buffer = new T[nelems += 10];
             if (new_buffer == 0)
-                throw exception("out of memory");
+                throw std::exception("out of memory");
             for (int i = 0; i < top; i++)
                 new_buffer[i] = v[i];
             delete[] v;
@@ -32,7 +30,7 @@ public:
 
     T pop() {
         if (top < 0)
-            throw exception("pop on empty stack");
+            throw std::exception("pop on empty stack");
         return v[top--];
     }
 
@@ -40,13 +38,13 @@ public:
         top = -1;
         v = new T[nelems = 10];
         if (v == 0)
-            throw exception("out of memory");
+            throw std::exception("out of memory");
     }
 
     Stack(const Stack& s) {
         v = new T[nelems = s.nelems];
         if (v == 0)
-            throw exception("out of memory");
+            throw std::exception("out of memory");
         if (s.top > -1) {
             for (top = 0; top <= s.top; top++) {
                 v[top] = s.v[top];
@@ -63,7 +61,7 @@ public:
         delete[] v;
         v = new T[nelems = s.nelems];
         if (v == 0) {
-            throw exception("out of memory");
+            throw std::exception("out of memory");
         }
         if (s.top > -1) {
             for (top = 0; top <= s.top; top++) {
