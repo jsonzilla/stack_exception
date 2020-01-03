@@ -1,5 +1,5 @@
-# simple_gtest_template
-Simple GTest template
+# stack_exception
+Code for study the article EXCEPTION HANDLING: A FALSE SENSE OF SECURITY by Tom Cargill
 
 ````
 git submodule update --init --recursive
